@@ -1,6 +1,7 @@
-CREATE DATABASE Ventas_Tech_DB;
 
-USE Ventas_Tech_DB;
+
+USE ventas_tech_db;
+GO
 
 
 
@@ -34,15 +35,15 @@ fecha_registro DATE NOT NULL);
 CREATE TABLE Productos
 (id_producto INT PRIMARY KEY,
 nombre_producto VARCHAR (100) NOT NULL,
-id_categoria INT FOREIGN KEY (id_categoria) REFERENCES Categorias(id_categoria),
+id_categoria INT REFERENCES Categorias(id_categoria),
 precio DECIMAL (10,2) NOT NULL,
 stock INT DEFAULT 0,
 activo BIT DEFAULT 1);
 
 CREATE TABLE Ventas
 (id_venta INT PRIMARY KEY,
-id_cliente INT FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente),
-id_producto INT FOREIGN KEY (id_producto) REFERENCES Productos(id_producto),
+id_cliente INT REFERENCES Clientes(id_cliente),
+id_producto INT REFERENCES Productos(id_producto),
 cantidad INT NOT NULL,
 precio_unitario DECIMAL (10,2) NOT NULL,
 fecha_venta DATE NOT NULL);
